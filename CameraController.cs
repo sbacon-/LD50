@@ -28,14 +28,14 @@ public class CameraController : MonoBehaviour
     }
 
     void HandleMovementInput(){
-        Debug.Log(Input.mousePosition.x+", "+Input.mousePosition.y);
+        Debug.Log(InputEx.mousePosition.x+", "+InputEx.mousePosition.y);
         float movementSpeed = (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))?fastSpeed:slowSpeed;
         float numScrolls = scrolls*Mathf.Abs(Input.mouseScrollDelta.y);
         if(numScrolls == 0.0f)numScrolls = 1.0f;
-        if(Input.mousePosition.y > 500 || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
+        if(InputEx.mousePosition.y > 500 || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
             newPosition+= (transform.up * movementSpeed * numScrolls);
         }
-        if(Input.mousePosition.y < 100 || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow)){
+        if(InputEx.mousePosition.y < 100 || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow)){
             newPosition+= (transform.up * -movementSpeed * numScrolls);
             if(newPosition.y<=0) newPosition = Vector3.zero;
         }
